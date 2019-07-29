@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^logout/$', views.logout, {"next_page": 'welcome'}),
     # url(r'^insta/login/',login_view)
 
-    # url(r'^timeline/',include('timeline.urls'))
+    
 ]
