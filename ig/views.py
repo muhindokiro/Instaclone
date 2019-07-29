@@ -7,8 +7,8 @@ from .forms import NewPicForm
 # from django.contrib.auth import authenticate,get_user_model,login,logout
 # from .forms import UserLoginForm,UserSignUpForm 
 
-# Create your views here.
 
+# Create your views here
 def welcome(request):
     return render(request, 'welcome.html')
 
