@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import Pic
 
-# Create your tests here.
+# Create your tests here
 class PicTestClass(TestCase):
 
     def setUp(self):
