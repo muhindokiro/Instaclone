@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to the Instagram where you can share photos with your friends.
