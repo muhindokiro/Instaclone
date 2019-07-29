@@ -9,6 +9,7 @@ urlpatterns=[
     url(r'^timeline/$',views.timeline,name = 'timeline'),
     url(r'^profile/$',views.profile,name = 'profile'),
     url(r'^accounts/profile/$', views.timeline, name = 'timeline')
+    
     # url(r'^login/$',views.login,name = 'login')
 ]
 
