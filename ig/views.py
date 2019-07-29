@@ -8,7 +8,7 @@ from .forms import NewPicForm
 # from .forms import UserLoginForm,UserSignUpForm 
 
 
-# Create your views here
+# Create your views he
 def welcome(request):
     return render(request, 'welcome.html')
 
