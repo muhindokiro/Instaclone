@@ -1,14 +1,10 @@
 from django import forms
 from .models import Pic
 
-
 class NewPicForm(forms.ModelForm):
     class Meta:
         model = Pic
         exclude = []
-
-
-
 
 
 # from django.contrib.auth import authenticate, get_user_model
