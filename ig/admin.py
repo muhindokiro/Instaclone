@@ -6,6 +6,4 @@ class PicAdmin(admin.ModelAdmin):
     
 admin.site.register(Pic)
 
-
-
 # Register your models here.
