@@ -174,6 +174,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 django_heroku.settings(locals())
 
 # Email configurations remember to install python-decouple
+
 # EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 # EMAIL_HOST = config('EMAIL_HOST')
 # EMAIL_PORT = config('EMAIL_PORT')
