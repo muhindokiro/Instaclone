@@ -36,11 +36,11 @@ class tags(models.Model):
     def __str__(self):
         return self.name
 
-class Article(models.Model):
+class Post(models.Model):
     username = models.CharField(max_length=60)
     post = models.CharField(max_length=60)
     editor = models.ForeignKey(User,on_delete=models.CASCADE) 
-    article_image = models.ImageField(upload_to='images/', blank=True)
+    post_image = models.ImageField(upload_to='images/', blank=True)
 
     @classmethod
     def todays_ig(cls):

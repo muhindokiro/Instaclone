@@ -5,7 +5,6 @@ from . import views
 
 urlpatterns=[
     url(r'^$',views.ig_today,name='igToday'),
-    # url(r'^article/(\d+)',views.article,name ='article'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^new/article$', views.new_post, name='new-post')
 ]

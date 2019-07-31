@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article
+from .models import Post
 
 class NewsLetterForm(forms.Form):
     your_name = forms.CharField(label='First Name',max_length=30)
@@ -7,7 +7,7 @@ class NewsLetterForm(forms.Form):
 
 class NewArticleForm(forms.ModelForm):
     class Meta:
-        model = Article
+        model = Post
         exclude = ['editor', 'pub_date']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),

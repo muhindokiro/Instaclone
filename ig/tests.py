@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Editor,Article,tags
+from .models import Editor,Post,tags
 import datetime as dt
 
 # Create your tests here.
@@ -44,7 +44,7 @@ class ArticleTestClass(TestCase):
         self.new_tag = tags(name = 'testing')
         self.new_tag.save()
 
-        self.new_article= Article(title = 'Test Article',post = 'This is a random test Post',editor = self.james)
+        self.new_article= Post(title = 'Test Article',post = 'This is a random test Post',editor = self.james)
         self.new_article.save()
 
         self.new_article.tags.add(self.new_tag)
@@ -52,10 +52,10 @@ class ArticleTestClass(TestCase):
     def tearDown(self):
         Editor.objects.all().delete()
         tags.objects.all().delete()
-        Article.objects.all().delete()
+        Post.objects.all().delete()
 
     def test_get_ig_today(self):
-        today_ig = Article.todays_ig()
+        today_ig = Post.todays_ig()
         self.assertTrue(len(today_ig)>0)
 
     # def test_get_ig_by_date(self):

@@ -1,4 +1,4 @@
-{%extends 'all-news/base.html'%} 
+{%extends 'all-posts/base.html'%} 
 {% block content %}
 <div class="container">
 
@@ -6,7 +6,7 @@
     {% if articles%}
       <h2>Found {{ articles|length }} user by the name {{message}}</h2>
     {% else %}
-      <h2> Found 0 articles {{message}}</h2>
+      <h2> Found 0 users {{message}}</h2>
     {% endif %}
 
   </div>
