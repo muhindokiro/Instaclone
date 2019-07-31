@@ -1,1 +1,1 @@
-gunicorn --log-file=- onbytes.wsgi:instagram
+web: gunicorn instagram.wsgi --log-file -
