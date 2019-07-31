@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from .models import Post
-from .forms import NewArticleForm,NewsLetterForm,RegisterForm
+from .forms import NewArticleForm,NewsLetterForm,RegisterForm,NewsLetterRecipients,UserRegistrationForm
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
 

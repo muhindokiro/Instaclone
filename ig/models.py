@@ -43,7 +43,6 @@ class Post(models.Model):
 
     @classmethod
     def todays_ig(cls):
-        today = dt.date.today()
         ig = cls.objects.filter()
         return ig
 
