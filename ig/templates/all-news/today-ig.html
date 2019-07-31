@@ -1,0 +1,116 @@
+{%extends 'all-news/base.html'%}
+{% load bootstrap3 %}
+
+{% block content %}
+{{block.super}}
+<div class='container' style='margin-left: 20%'>
+
+  <!-- Looping through ig   -->
+  {% for ig_item in ig %}
+
+  <div class="">
+            <div class="card ml-4 mt-4" style="width: 70rem; height: 74rem;">
+                <div>
+                <br>
+                <img height=8%; width=8%; src="{{ig_item.article_image.url}}" alt="Avatar" class="rounded-circle">
+                <p style="font-size:15px;"><b>{{ ig_item.username }}</b></p>
+                
+                <img class="card-img-top" height="500px"  src="{{ig_item.article_image.url}}" alt="Card image cap"></a>
+                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>      
+        </div>
+    </div>
+    
+          </div>
+          <div style="font-size:25px;" class="card-body">
+          <p style="font-size:15px;"><b>{{ ig_item.post }}</b></p>
+                <span><i class="far fa-heart"></i>  <i class="far fa-comment"></i>  <i class="far fa-paper-plane"></i>  </span>
+                <p style="font-size:15px;"><b>View comments</b></p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+  {% endfor %}
+
+         <div class="">
+            <div class="card ml-4 mt-4" style="width: 70rem; height: 74rem;">
+                <div>
+                <br>
+                <img height=8%; width=8%; src="/static/beyonce.jpg" alt="Avatar" class="rounded-circle">
+                <p style="font-size:15px;margin-left: 75%" class="btn btn-default"><b>Follow</b></p>
+                <p style="font-size:15px;"><b>Beyonce</b></p>
+                
+                <img class="card-img-top" height="500px"  src="/static/beyonce.jpg" alt="Card image cap"></a>
+                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>      
+        </div>
+    </div>
+    
+          </div>
+          <div style="font-size:25px;" class="card-body">
+          <p style="font-size:15px;"><b>Great show last night guys</b></p>
+                <span><i class="far fa-heart"></i>  <i class="far fa-comment"></i>  <i class="far fa-paper-plane"></i>  </span>
+                <p style="font-size:15px;"><b>View comments</b></p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="">
+            <div class="card ml-4 mt-4" style="width: 70rem; height: 74rem;">
+                <div>
+                <br>
+                <img height=8%; width=8%; src="/static/cr7.jpg" alt="Avatar" class="rounded-circle">
+                <p style="font-size:15px;margin-left: 75%" class="btn btn-default"><b>Follow</b></p>
+                <p style="font-size:15px;"><b>Cristiano Ronaldo</b></p>
+                
+                <img class="card-img-top" height="500px"  src="/static/cr7.jpg" alt="Card image cap"></a>
+                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>      
+        </div>
+    </div>
+    
+          </div>
+          <div style="font-size:25px;" class="card-body">
+          <p style="font-size:15px;"><b>Nike </b></p>
+                <span><i class="far fa-heart"></i>  <i class="far fa-comment"></i>  <i class="far fa-paper-plane"></i>  </span>
+                <p style="font-size:15px;"><b>View comments</b></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="">
+            <div class="card ml-4 mt-4" style="width: 70rem; height: 74rem;">
+                <div>
+                <br>
+                <img height=8%; width=8%; src="/static/ig.jpg" alt="Avatar" class="rounded-circle">
+                <p style="font-size:15px;margin-left: 75%" class="btn btn-default"><b>Follow</b></p>
+                <p style="font-size:15px;"><b>Instagram</b></p>
+                
+                <img class="card-img-top" height="500px"  src="/static/instagram.jpg" alt="Card image cap"></a>
+                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>      
+        </div>
+    </div>
+    
+          </div>
+          <div style="font-size:25px;" class="card-body">
+          <p style="font-size:15px;"><b>Breathe, Focus, Snap</b></p>
+                <span><i class="far fa-heart"></i>  <i class="far fa-comment"></i>  <i class="far fa-paper-plane"></i>  </span>
+                <p style="font-size:15px;"><b>View comments</b></p>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+{% endblock %}

@@ -1,16 +1,13 @@
 from django.conf.urls import url
-from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from . import views
 
 urlpatterns=[
-    url(r'^$',views.welcome,name = 'welcome'),
-    url(r'^timeline/$',views.timeline,name = 'timeline'),
-    url(r'^profile/$',views.profile,name = 'profile'),
-    url(r'^accounts/profile/$', views.timeline, name = 'timeline')
-    
-    # url(r'^login/$',views.login,name = 'login')
+    url(r'^$',views.ig_today,name='igToday'),
+    # url(r'^article/(\d+)',views.article,name ='article'),
+    url(r'^search/', views.search_results, name='search_results'),
+    url(r'^new/article$', views.new_post, name='new-post')
 ]
 
 if settings.DEBUG:

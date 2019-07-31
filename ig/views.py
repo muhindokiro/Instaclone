@@ -1,52 +1,70 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
+from .models import Article
+from .forms import NewArticleForm,NewsLetterForm,RegisterForm
 from .email import send_welcome_email
-from .models import Pic
-from .forms import NewPicForm
-# from django.contrib.auth import authenticate,get_user_model,login,logout
-# from .forms import UserLoginForm,UserSignUpForm 
+from django.contrib.auth.decorators import login_required
 
-
-# Create your views. 
-def welcome(request):
-    return render(request, 'welcome.html')
-
+# Create your views here.
 @login_required(login_url='/accounts/login/')
-def timeline(request):
-    return render(request, 'timeline.html')
-
-def profile(request):
-    return render(request, 'profile.html')
-
-# def login_view(request):
-#     next = request.GET.get('next')
-#     form = UserLoginForm(request.POST or None)
-#     if form.is_valid():
-#         username = form.cleaned_data.get('username')
-#         password = form.cleaned_data.get('password')
-#         user = authenticate(username=username, password=password)
-#         login(request,user)
-#         if next:
-#             return redirect(next)
-#         return redirect('/')
-
-#     context = {
-#         'form': form,
-#     }
-
-#     return render(request, 'timeline.html',context)
-
-@login_required(login_url='/accounts/login/')
-def new_pic(request):
-    current_user = request.user
+def ig_today(request):
+    ig = Article.todays_ig()
     if request.method == 'POST':
-        form = NewPicForm(request.POST, request.FILES)
+        form = NewsLetterForm(request.POST)
         if form.is_valid():
-            pic = form.save(commit=False)
-            pic.save()
-        return redirect('')
+            name = form.cleaned_data['your_name']
+            email = form.cleaned_data['email']
+            recipient = NewsLetterRecipients(name = name,email =email)
+            recipient.save()
+            send_welcome_email(name,email)
+            HttpResponseRedirect('ig_today')
+    else:
+        form = NewsLetterForm()
+    return render(request, 'all-news/today-ig.html', {"ig":ig,"letterForm":form})
+
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+
+    if 'article' in request.GET and request.GET["article"]:
+        search_term = request.GET.get("article")
+        searched_articles = Article.search_by_username(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-news/search.html',{"message":message,"articles": searched_articles})
 
     else:
-        form = NewPicForm()
-    return render(request, 'timeline.html', {"form": form})
+        message = "You haven't searched for any term"
+        return render(request, 'all-news/search.html',{"message":message})
+
+
+
+
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.editor = current_user
+            article.save()
+        return redirect('igToday')
+
+    else:
+        form = NewArticleForm()
+    return render(request, 'new_post.html', {"form": form})
+
+def register(request):
+   if request.method == "POST":
+       form = UserRegistrationForm(request.POST)
+       if form.is_valid():
+           form.save()
+           username = form.cleaned_data.get('username')
+           email = form.cleaned_data['email']
+           send_welcome_email(username,email)
+           return redirect('all_news/today_ig.html')
+   else:
+       form =RegisterForm()
+   return render(request,'registration/registration_form.html',{'form':form})
+  
+

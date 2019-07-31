@@ -1,6 +1,5 @@
 {% load bootstrap3 %}
-{% load static from staticfiles %}
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +11,9 @@
     <title> Instagram </title>
   {% endif %}
 
-{% block styles %}
- {% bootstrap_css %}
-
- <!-- Font Awesome -->
+  {% block styles %}
+    {% bootstrap_css %}
+    <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <!-- Bootstrap core CSS -->
@@ -24,20 +22,20 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/css/mdb.min.css" rel="stylesheet"> 
   <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
   {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endcomment %}
-  
-{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+  {% endblock %}
 
 </head>
-<body>
+<body style="font-family: 'Courgette', cursive; overflow-x: hidden;">
+    {% include "navbar.html" %}
+    <br>
+     
+    {% block content %} <h1 style="color: black" class='text-center'>Instagram</h1> {%endblock%}
 
-{% include "navbar.html" %}
+    <br>
 
-{% block content %}
-
-{%endblock%}
-
-{% block scripts %}
- <!-- JQuery -->
+    {% block scripts %}
+        <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
@@ -48,8 +46,9 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.3/js/mdb.min.js"></script>
 
- {% bootstrap_javascript %}
-{% endblock %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     {% bootstrap_javascript %}
+    {% endblock %}
 
 </body>
 </html>

@@ -1,20 +1,31 @@
-<!--Navbar -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<nav style="background-image: url(/static/bg1.jpeg); font-family: 'Courgette', cursive;" class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<nav style="background-image: url(/static/bg1.jpeg);" class="navbar navbar-inverse">
+  <div class="container-fluid">
   <img src="https://img.icons8.com/cute-clipart/64/000000/instagram-new.png">
-  <a style="color: black" class="navbar-brand" href="{% url 'timeline' %}">Instagram </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      
-      <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-large">Login</button>
-    </ul>
-  </div>
-  <div class="col-sm-6 col-md-6">
-            {% if user.is_authenticated %}
+    <div class="navbar-header">
+      <a style="font-size:15px; color: black" class="navbar-brand" href="{% url 'igToday' %}">Instagram</a>
+    </div>
+    
+    <!-- Adding a search form  -->
+      <div class="col-sm-4 col-md-4 navbar-right">
+        <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search User" name="article">
+            <div class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+        </form>
+        
+      </div>
+      {% if user.is_authenticated %}
             <ul>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
@@ -22,13 +33,16 @@
                       </a>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a >Home</a>
+                    <a style="font-size:15px; color: black" href="{%url 'igToday'%}">Home</a>
                   </li>
                   <li>
-                    <a href="/accounts/password/change">Change Password</a>
+                    <a style="font-size:15px; color: black" href="{%url 'new-post'%}">Create Post</a>
                   </li>
                   <li>
-                    <a href="/logout">Logout</a>
+                    <a style="font-size:15px; color: black" href="/accounts/password/change">Change Password</a>
+                  </li>
+                  <li>
+                    <a style="font-size:15px; color: black" href="/logout">Logout</a>
                   </li>
                 </ul>
               </li>
@@ -39,7 +53,10 @@
             </li>
 
             {% endif %}
-          </div>
+      <!-- search form end -->
+       
+  </div>
+  
 </nav>
-
-<!--/.Navbar -->
+</body>
+</html>

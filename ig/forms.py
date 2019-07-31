@@ -1,54 +1,23 @@
 from django import forms
-from .models import Pic
+from .models import Article
 
-class NewPicForm(forms.ModelForm):
+class NewsLetterForm(forms.Form):
+    your_name = forms.CharField(label='First Name',max_length=30)
+    email = forms.EmailField(label='Email')
+
+class NewArticleForm(forms.ModelForm):
     class Meta:
-        model = Pic
-        exclude = []
+        model = Article
+        exclude = ['editor', 'pub_date']
+        widgets = {
+            'tags': forms.CheckboxSelectMultiple(),
+        }
 
-
-# from django.contrib.auth import authenticate, get_user_model
-
-# User = get_user_model()
-
-# class UserLoginForm(forms.Form):
-#     username = forms.CharField()
-#     password = forms.CharField(widget=forms.PasswordInput)
-
-
-#     def clean(self, *args, **kwargs):
-#         username = self.cleaned_data.get('username')
-#         password = self.cleaned_data.get('password')
-
-#         if username and password:
-#             user = authenticate(username=username, password=password)
-#             if not user:
-#                 raise forms.ValidationError('This user does not exist')
-#             if not user.check_password(password):
-#                 raise forms.ValidationError('Incorrect password')
-
-#         return super(UserLoginForm, self).clean(*args, **kwargs)
-
-
-# class UserSignUpForm(forms.ModelForm):
-#     email = forms.EmailField(label='Email Address')
-#     password = forms.CharField(widget=forms.PasswordInput)
-
-#     class Meta:
-#         model = User
-#         fields = [
-#             'username',
-#             'email',
-#             'password'
-
-#         ]
-    
-#     def clean_email(self):
-#         email = self.cleaned_data.get('email')
-#         email_qs = User.objects.filter(email=email)
-#         if email_qs.exists():
-#             raise forms.ValidationError(
-#                 'This email is already being used'
-#             )
-#         return email
-
+class RegisterForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    email = forms.EmailField(label='Email')
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    password_repeat = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    phone_number = forms.CharField(widget=forms.NumberInput(attrs={'class':'form-control'}), required=False)
